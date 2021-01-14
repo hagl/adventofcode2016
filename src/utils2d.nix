@@ -17,7 +17,7 @@ let
     (take y arr) ++ [row] ++ (drop (y + 1) arr);
 
   printLine = row:
-    concatStrings ((map (p: if p == 0 then " " else "X") row) ++ ["\n"]);
+    concatStrings ((map (p: if p == 0 then "." else if p == -1 then "#" else ( toString p)) row) ++ ["\n"]);
 
   printArray = arr:
     concatStrings (map printLine arr);

@@ -69,7 +69,6 @@ let
 
 in 
   {
-    solutionEx = solve ./day8ex.txt;
     solution = solve ./day10.txt;
     solution2 = solve2 ./day10.txt;
   }

@@ -4,7 +4,7 @@ let
     foldl (a: b: a+b) 0 list;
 
   product = list:
-    foldl (a: b: a+b) 0 list;
+    foldl (a: b: a*b) 1 list;
    
   indexOf = elem: list:
     let 
@@ -22,10 +22,11 @@ let
   lines = str:
     filter (s: s != "") (map head (filter isList (builtins.split "([^\n]*)" str)));
 
+  updateList = arr: y: el:
+    (take y arr) ++ [el] ++ (drop (y + 1) arr);
+
+  repeat = n: f: s: foldl' (acc: _: f acc) s (range 0 n);
+
 in {
-  sum = sum;
-  product = product;
-  indexOf = indexOf;
-  startsWith = startsWith;
-  lines = lines;
+  inherit sum product indexOf startsWith lines updateList repeat;
 }

@@ -27,6 +27,9 @@ let
 
   repeat = n: f: s: foldl' (acc: _: f acc) s (range 0 n);
 
+  grouped = l: n:
+    if (length l <= n) then [l] else [(take n l)] ++ (grouped (drop n l) n);
+
 in {
-  inherit sum product indexOf startsWith lines updateList repeat;
+  inherit sum product indexOf startsWith lines updateList repeat grouped;
 }

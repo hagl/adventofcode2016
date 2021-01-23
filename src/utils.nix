@@ -30,6 +30,15 @@ let
   grouped = l: n:
     if (length l <= n) then [l] else [(take n l)] ++ (grouped (drop n l) n);
 
+  sliding = l: n:
+    if (length l < n) then [] else [(take n l)] ++ (sliding (tail l) n);
+
+  maximum = default: list: 
+    foldl' max default list;
+
+  minimum = default: list: 
+    foldl' min default list;
+
 in {
-  inherit sum product indexOf startsWith lines updateList repeat grouped;
+  inherit sum product indexOf startsWith lines updateList repeat grouped sliding minimum maximum;
 }

@@ -8,19 +8,19 @@ dec c
 jnz c -2
 dec d
 jnz d -5   
-dec b   // b = b - 1
-cpy b c // line 12-16 will calculate c := 2 * b
+dec b    // b = b - 1
+cpy b c  // line 12-16 will calculate c := 2 * b
 cpy c d
 dec d
 inc c
 jnz d -2
 tgl c    // toggle line 16+2 * b
 cpy -16 c
-jnz 1 c // goto line 3  (when b = 1 this will be modified to copy 1 c => continue)
+jnz 1 c  // goto line 3  (when b = 1 this will be modified to copy 1 c => continue)
 cpy 89 c
 jnz 77 d // when reached and will already be modified to: cpy 77 d
-inc a  // line 22-26 calculate a := a + 89 * 77
-inc d // when reached and will already be modified to: dec d
+inc a    // line 22-26 calculate a := a + 89 * 77
+inc d    // when reached and will already be modified to: dec d
 jnz d -2
-inc c // when reached and will already be modified to: dec c
+inc c    // when reached and will already be modified to: dec c
 jnz c -5

@@ -9,12 +9,6 @@ let
     to = toInt (elemAt matches 1);
   };
 
-  maximum = default: list: 
-    foldl' max default list;
-
-  minimum = default: list: 
-    foldl' min default list;
-
   findMinimal = rules: n:
     let
       matchingRules = filter (r: r.from <= n && n <= r.to) rules;

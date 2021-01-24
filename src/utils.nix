@@ -39,6 +39,14 @@ let
   minimum = default: list: 
     foldl' min default list;
 
+  permutations = list:
+    if list == [] then [[]]
+    else let 
+      go = pre: post: 
+        if post == [] then []
+        else (map (l:  [(head post)] ++ l) (permutations (pre ++ (tail post)))) ++ (go (pre ++ [(head post)]) (tail post));
+    in go [] list;
+
 in {
-  inherit sum product indexOf startsWith lines updateList repeat grouped sliding minimum maximum;
+  inherit sum product indexOf startsWith lines updateList repeat grouped sliding minimum maximum permutations;
 }

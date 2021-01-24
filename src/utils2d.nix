@@ -16,6 +16,9 @@ let
   updateRow = arr: y: row:
     (take y arr) ++ [row] ++ (drop (y + 1) arr);
 
+  updatePos = arr: x: y: v:
+    updateRow arr y (updateRow (getRow arr y) x v);
+
   printLine = row:
     concatStrings ((map (p: if p == 0 then "." else if p == -1 then "#" else ( toString p)) row) ++ ["\n"]);
 
@@ -36,13 +39,5 @@ let
     in (map rectRow (take dy arr)) ++ (drop dy arr);
 
 in {
-  createArray = createArray;
-  getColumn = getColumn;
-  updateColumn = updateColumn;
-  getRow = getRow;
-  updateRow = updateRow;
-  printLine = printLine;
-  printArray = printArray;
-  rotate = rotate;
-  rect = rect;
+  inherit updatePos createArray getColumn updateColumn getRow updateRow printLine printArray rotate rect;
 }
